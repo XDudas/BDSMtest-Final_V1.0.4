@@ -1189,4 +1189,28 @@ let questionTypeMappings = [
             reader.onerror = error => reject(error);
         });
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const username = sessionStorage.getItem('username');
+        const welcomeContainer = document.getElementById('welcome-container');
+        const guestContainer = document.getElementById('guest-container');
+        const userInfo = document.getElementById('user-info');
+    
+        if (username) {
+            document.getElementById('username').textContent = username;
+            welcomeContainer.style.display = 'block';
+            guestContainer.style.display = 'none';
+    
+            // Add logout button
+            userInfo.innerHTML = '<button class="ml-3 btn btn-primary" onclick="logout()">Logout</button>';
+        } else {
+            welcomeContainer.style.display = 'none';
+            guestContainer.style.display = 'block';
+        }
+    });
+    
+    function logout() {
+        sessionStorage.clear();
+        window.location.reload();
+    }
     
