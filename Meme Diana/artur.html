@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artur - Página de Memes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand animate__animated animate__bounce" href="#">MEMES</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="indexx.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="duarte.html">Duarte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="miguel.html">Miguel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="diana.html">Diana</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="artur.html">Artur</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="yasmin.html">Yasmin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link animate__animated animate__fadeInRight" href="Meme Diana/indexx.html">Meme Diana</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content animate__animated animate__fadeIn">
+            <h2 class="animate__animated animate__fadeInDown">Sobre o Artur</h2>
+            <p class="animate__animated animate__fadeInUp">
+                Artur é o tipo de pessoa que passou por muitas dificuldades na vida e começou a usar "substâncias divinas" para lidar com os problemas sem partir a boca a todos que o irritam. Sofreu ferimentos em combate durante sua vida, e uma das ocasiões foi com a testa de aeroporto santa azeiteira que o mandou para o hospital com muitas dores em um lugar que não mencionamos. No entanto, ele é uma pessoa de confiança, sendo o segundo pai do grupo junto com o Duarte, para lidar com as merdas dos outros e depois rir das figuras com ele.
+            </p>
+            <p class="animate__animated animate__fadeInUp">
+                Artur é confiável, trabalhador e realista. Lembre-se, se falar merda, leva com uma cabeçada no céu da boca, porque ele é um bolicao.
+            </p>
+            <div class="media">
+                <div class="media-item animate__animated animate__zoomIn">
+                    <img src="artur.jpg" alt="Artur" class="img-fluid">
+                </div>
+                <div class="media-item animate__animated animate__zoomIn">
+                    <img src="artur2.jpg" alt="Artur" class="img-fluid">
+                </div>
+                <div class="media-item animate__animated animate__zoomIn" id="audio-trigger">
+                    <img src="artur3.jpg" alt="Artur" class="img-fluid">
+                    <audio id="audio-player">
+                        <source src="audioartur.mp3" type="audio/mp3">
+                        Seu navegador não suporta o elemento de áudio.
+                    </audio>
+                </div>
+            </div>
+            <p class="legendary-quote animate__animated animate__pulse">"Água fria do bidé uma cona aberta e um caralho em pé sete putas e um cabrão a fuder num camião ... "</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('audio-trigger').addEventListener('click', function() {
+            var audio = document.getElementById('audio-player');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
+    </script>
+</body>
+</html>
