@@ -5,7 +5,6 @@ document.getElementById('register-form').addEventListener('submit', function (e)
     const password = document.getElementById('password').value;
     const photo = document.getElementById('photo').files[0];
 
-    // Simulating user registration (replace with actual backend call)
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const userExists = users.some(user => user.email === email);
 
@@ -15,13 +14,17 @@ document.getElementById('register-form').addEventListener('submit', function (e)
         errorMessage.style.display = 'block';
     } else {
         const reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             const newUser = {
                 username,
                 email,
                 password,
                 photo: reader.result,
-                role: 'user'
+                role: 'user',
+                pronouns: '',
+                bio: '',
+                banner: null,
+                bannerType: null
             };
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
@@ -37,7 +40,11 @@ document.getElementById('register-form').addEventListener('submit', function (e)
                 email,
                 password,
                 photo: null,
-                role: 'user'
+                role: 'user',
+                pronouns: '',
+                bio: '',
+                banner: null,
+                bannerType: null
             };
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));

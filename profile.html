@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .profile-card {
+            max-width: 300px;
+            margin: auto;
+            background: #2C2F33;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .profile-card img, .profile-card video {
+            width: 100%;
+            height: auto;
+        }
+        .profile-card .profile-photo {
+            border-radius: 50%;
+            margin: -50px auto 10px;
+            width: 100px;
+            height: 100px;
+            border: 5px solid #2C2F33;
+            object-fit: cover;
+        }
+        .profile-card h2 {
+            text-align: center;
+        }
+        .profile-card p {
+            text-align: center;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+    <main>
+        <div class="container profile-edit-container">
+            <h2>Customize Your Profile</h2>
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label for="edit-username">Display Name:</label>
+                    <input type="text" class="form-control" id="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-pronouns">Pronouns:</label>
+                    <input type="text" class="form-control" id="edit-pronouns">
+                </div>
+                <div class="form-group">
+                    <label for="edit-photo">Avatar (Image or Video):</label>
+                    <input type="file" class="form-control-file" id="edit-photo" accept="image/*,video/*">
+                </div>
+                <div class="form-group">
+                    <label for="edit-banner">Profile Banner (Image or Video):</label>
+                    <input type="file" class="form-control-file" id="edit-banner" accept="image/*,video/*">
+                </div>
+                <div class="form-group">
+                    <label for="edit-bio">Bio:</label>
+                    <textarea class="form-control" id="edit-bio" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">Back</button>
+            </form>
+        </div>
+
+        <div class="container profile-preview-container">
+            <h2>Preview</h2>
+            <div class="profile-card">
+                <div id="preview-banner-container">
+                    <img id="preview-banner-img" src="default-banner.png" alt="Profile Banner" class="img-fluid">
+                    <video id="preview-banner-video" class="img-fluid" loop></video>
+                </div>
+                <div class="profile-card-content">
+                    <img id="preview-photo-img" src="default-avatar.png" alt="User Photo" class="profile-photo">
+                    <video id="preview-photo-video" class="profile-photo" loop muted></video>
+                    <h2 id="preview-username">Username</h2>
+                    <p id="preview-pronouns">Pronouns</p>
+                    <p id="preview-bio">Bio: This is a sample bio.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 BDSM Test. All rights reserved.</p>
+    </footer>
+    <script src="profile.js"></script>
+</body>
+</html>

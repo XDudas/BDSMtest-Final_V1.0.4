@@ -1191,26 +1191,31 @@ let questionTypeMappings = [
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        const username = sessionStorage.getItem('username');
-        const welcomeContainer = document.getElementById('welcome-container');
-        const guestContainer = document.getElementById('guest-container');
-        const userInfo = document.getElementById('user-info');
-    
-        if (username) {
-            document.getElementById('username').textContent = username;
-            welcomeContainer.style.display = 'block';
-            guestContainer.style.display = 'none';
-    
-            // Add logout button
-            userInfo.innerHTML = '<button class="ml-3 btn btn-primary" onclick="logout()">Logout</button>';
-        } else {
-            welcomeContainer.style.display = 'none';
-            guestContainer.style.display = 'block';
-        }
-    });
-    
-    function logout() {
-        sessionStorage.clear();
-        window.location.reload();
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    console.log('Current User:', currentUser);
+
+    if (currentUser) {
+        document.getElementById('username').textContent = currentUser.username;
+        document.getElementById('welcome-container').style.display = 'block';
+        document.getElementById('guest-container').style.display = 'none';
+        document.getElementById('login-btn').style.display = 'none';
+        document.getElementById('register-btn').style.display = 'none';
+        document.getElementById('profile-btn').style.display = 'block';
+        document.getElementById('logout-btn').style.display = 'block';
+    } else {
+        document.getElementById('welcome-container').style.display = 'none';
+        document.getElementById('guest-container').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'block';
+        document.getElementById('register-btn').style.display = 'block';
+        document.getElementById('profile-btn').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'none';
     }
+});
+
+function logout() {
+    sessionStorage.removeItem('currentUser');
+    window.location.reload();
+}
+
+    
     
