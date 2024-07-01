@@ -16,6 +16,26 @@
             padding: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 2px 2px 5px #000, -2px -2px 5px #666;
+            background-color: #000;
+        }
+
+        .minigames-section .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 2px 2px 5px #000, -2px -2px 5px #666;
+            background-color: #000;
+        }
+
+        .minigames-section .card:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 4px 10px #000, -4px -4px 10px #666;
+            background-color: #000;
+        }
+
+        .minigames-section .card img {
+            height: 200px;
+            object-fit: auto;
+            background-color: #000;
         }
     </style>
 </head>
@@ -72,29 +92,53 @@
                 <p>Explore our collection of AI videos.</p>
                 <button class="btn btn-primary" onclick="window.location.href='videos.html'">Go to Videos</button>
             </div>
-            <h2>Mini Games</h2>
-            <div class="mode">
-                <h3><i class="fas fa-chess"></i> Chess Game</h3>
-                <p>Play the chess game.</p>
-                <button class="btn btn-primary" onclick="window.location.href='Chess-master/indexx.html'">Play Chess-Master</button>
-            </div>
-            <div class="mode">
-                <h3><i class="fas fa-heart"></i> Lover's Roulette</h3>
-                <p>Play Lover's Roulette game.</p>
-                <button class="btn btn-primary" onclick="window.location.href='LOVERS ROULLETE/indexxx.html'">Play Lover's Roulette</button>
-            </div>
-            <div class="mode">
-                <h3><i class="fas fa-skull"></i> Sans game</h3>
-                <p>Play the Miguel Fight.</p>
-                <button class="btn btn-primary" onclick="window.location.href='sans-fight/Build/index.html'">Play Miguel sans-fight</button>
-            </div>
-            <div class="mode">
-                <h3><i class="fas fa-air"></i>Artur last stand</h3>
-                <p>LAST BREATH.</p>
-                <button class="btn btn-primary" onclick="window.location.href='undertale-last-breath-remake-bad-time-simulator-master/index.html'">Artur :You ... can´t ... beat me</button>
-            </div>
-            
         </section>
+        <section class="minigames-section mt-5">
+            <h2>Mini Games</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="chess-game-image.png" class="card-img-top" alt="Chess Game">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-chess"></i> Chess Game</h5>
+                            <p class="card-text">Play the chess game.</p>
+                            <a href="Chess-master/indexx.html" class="btn btn-primary">Play Chess-Master</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="lovers-roulette-image.jpg" class="card-img-top" alt="Lover's Roulette">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-heart"></i> Lover's Roulette</h5>
+                            <p class="card-text">Play Lover's Roulette game.</p>
+                            <a href="LOVERS ROULLETE/indexxx.html" class="btn btn-primary">Play Lover's Roulette</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="sans-game-image.png" class="card-img-top" alt="Sans Game">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-skull"></i> Sans Game</h5>
+                            <p class="card-text">Play the Miguel Fight.</p>
+                            <a href="sans-fight/Build/index.html" class="btn btn-primary">Play Miguel sans-fight</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="artur-last-stand-image.png" class="card-img-top" alt="Artur Last Stand">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-stopwatch"></i> Artur Last Stand</h5>
+                            <p class="card-text">LAST BREATH.</p>
+                            <a href="undertale-last-breath-remake-bad-time-simulator-master/index.html" class="btn btn-primary">Artur: You ... can´t ... beat me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            
         <div id="test-section" class="hidden">
             <div id="question-container">
                 <h2 id="question"></h2>
