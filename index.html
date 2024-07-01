@@ -16,14 +16,12 @@
             padding: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 2px 2px 5px #000, -2px -2px 5px #666;
-            background-color: #000;
         }
 
         .minigames-section .card {
             margin-bottom: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 2px 2px 5px #000, -2px -2px 5px #666;
-            background-color: #000;
         }
 
         .minigames-section .card:hover {
@@ -35,6 +33,24 @@
         .minigames-section .card img {
             height: 200px;
             object-fit: auto;
+            background-color: #000;
+        }
+
+        .blog-section .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 2px 2px 5px #000, -2px -2px 5px #666;
+        }
+
+        .blog-section .card:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 4px 10px #000, -4px -4px 10px #666;
+            background-color: #000;
+        }
+
+        .blog-section .card img {
+            height: 200px;
+            object-fit: cover;
             background-color: #000;
         }
     </style>
@@ -138,6 +154,13 @@
                 </div>
             </div>
         </section>
+
+        <section class="blog-section mt-5">
+            <h2>Latest Blog Posts</h2>
+            <div class="row" id="blog-posts-container">
+                <!-- Blog posts will be inserted here dynamically -->
+            </div>
+        </section>
             
         <div id="test-section" class="hidden">
             <div id="question-container">
@@ -207,6 +230,7 @@
 
             if (currentUser) {
                 document.getElementById('username').textContent = currentUser.username;
+                document.getElementById('user-avatar').src = currentUser.avatar || 'default-avatar.png';
                 document.getElementById('welcome-container').style.display = 'block';
                 document.getElementById('guest-container').style.display = 'none';
                 document.getElementById('login-btn').style.display = 'none';
@@ -221,13 +245,51 @@
                 document.getElementById('profile-btn').style.display = 'none';
                 document.getElementById('logout-btn').style.display = 'none';
             }
+
+            // Sample blog posts data
+            const blogPosts = [
+                {
+                    title: "Understanding BDSM: A Comprehensive Guide",
+                    image: "blogposts/image1.jpg",
+                    summary: "This blog post explores the basics of BDSM, including its history, practices, and safety tips.",
+                    link: "blogposts/blog-post1.html"
+                },
+                {
+                    title: "Top 10 BDSM Myths Debunked",
+                    image: "blogposts/image2.jpg",
+                    summary: "We debunk the top 10 myths about BDSM, separating fact from fiction.",
+                    link: "blogposts/blog-post2.html"
+                }
+            ];
+
+            // Function to render blog posts
+            const renderBlogPosts = (posts) => {
+                const container = document.getElementById('blog-posts-container');
+                posts.forEach(post => {
+                    const card = document.createElement('div');
+                    card.className = 'col-md-4';
+                    card.innerHTML = `
+                        <div class="card">
+                            <img src="${post.image}" class="card-img-top" alt="${post.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text">${post.summary}</p>
+                                <a href="${post.link}" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            };
+
+            // Render the sample blog posts
+            renderBlogPosts(blogPosts);
         });
 
         function logout() {
             sessionStorage.removeItem('currentUser');
             window.location.reload();
         }
-    </script>
     </script>
     <script src="script.js"></script>
 </body>
