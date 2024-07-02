@@ -1,0 +1,257 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="BandaiNamco.Projeto_Mod17EB.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script>
+        function changeLanguage(language) {
+            // Define o idioma selecionado no armazenamento local
+            localStorage.setItem('language', language);
+            // Recarrega a página para aplicar o novo idioma
+            location.reload();
+        }
+    </script>
+
+    <style>
+        body {
+            background-image: url('Imagens/Background/Background.jpg');
+            background-size: cover; /* para cobrir todo o conteúdo */
+            background-repeat: no-repeat; /* para não repetir a imagem */
+        }
+    </style>
+    <script type="text/javascript">
+        function mudarIdioma(idioma) {
+            window.location.href = 'Produtos.aspx?lang=' + idioma;
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!--Navbar-->
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">|Bandai Namco|</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="BandaiNamco.aspx">Home</a></li>
+                        <li class="active"><a href="Produtos.aspx">Produtos</a></li>
+                        <%if (Request.QueryString["idioma"] == null)
+                            {  %>
+                        <li class="active"><a href="promocoes.aspx">Promoções</a></li>
+                        <%}%>
+                        <%if (Request.QueryString["idioma"] == "en")
+                            {  %>
+                        <li class="active"><a href="promocoes.aspx">Promotion</a></li>
+                        <%}%>
+                        <%if (Request.QueryString["idioma"] == "pt")
+                            {  %>
+                        <li class="active"><a href="promocoes.aspx">Promoções</a></li>
+                        <%}%>
+                        <li class="active"><a href="novidades.aspx">Novidades</a></li>
+                        <li class="active"><a href="Suporte.aspx">Suporte</a></li>
+
+                        <li>
+                            <div class="input-group" style="width: 300px; padding-left: 30px; padding-top: 10px">
+                                <input id="txt_pesquisa" type="text" class="form-control" placeholder="Search" runat="server">
+                                <div class="input-group-btn">
+                                    <button id="pesquisa" class="btn btn-default" runat="server" onserverclick="pesquisa_click">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <%if (Session["user"] == null && Session["admin"] == null)
+                        { %>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" id="Dropdown" runat="server" autopostback="true" data-value="pt">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-list"></span>IDIOMAS
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="changeLanguage('pt')" value="pt">
+                                    <img src="/Imagens/Icons/portuguesicon.png" class="img-thumbnail" style="width: 25px; height: 25px;" />
+                                    Português (Portugal)</a></li>
+                                <li><a href="#" onclick="changeLanguage('br')" value="br">
+                                    <img src="/Imagens/Icons/brazilicon.png" class="img-thumbnail" style="width: 25px; height: 25px;" />
+                                    Português (Brasil)</a></li>
+                                <li><a href="BandaiNamco.aspx?idioma=en" onclick="changeLanguage('en')" value="en">
+                                    <img src="/Imagens/Icons/inglesicon.png" class="img-thumbnail" style="width: 25px; height: 25px;" />
+                                    Inglês</a></li>
+                                <li><a href="#" onclick="changeLanguage('es')" value="es">
+                                    <img src="/Imagens/Icons/espanholicon.png" class="img-thumbnail" style="width: 25px; height: 25px;" />
+                                    Espanhol</a></li>
+                                <li><a href="#" onclick="changeLanguage('it')" value="it">
+                                    <img src="/Imagens/Icons/italianoicon.png" class="img-thumbnail" style="width: 25px; height: 25px;" />
+                                    Italiano</a></li>
+                                <li><a href="#" onclick="changeLanguage('ja')" value="ja">
+                                    <img src="/Imagens/Icons/japonesicon.png" class="img-thumbnail" style="width: 25px; height: 25px;" />
+                                    Japonês</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="registo.aspx"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+                        <li><a href="login.aspx"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                        <li>
+                            <img src="/Imagens/Icons/BandaiNamco.png" class="img-thumbnail" style="width: 70px; height: 50px;" />
+                        </li>
+                    </ul>
+
+                    <% }
+                        else
+                        {%>
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <%if (Session["user"] != null)
+                            { %>
+
+                        <li>
+                            <a href="Carrinho.aspx"><span class="glyphicon glyphicon-shopping-cart"></span>
+                                <span class="badge" style="background-color: red">
+                                    <asp:HiddenField ID="N_produtos_carrinho" runat="server" />
+                                    <%if (N_produtos_carrinho.Value != null)
+                                        {  %>
+                                    <% Response.Write(N_produtos_carrinho.Value);
+                                        }
+                                        else
+                                        {  %>
+                                    <% Response.Write("0");
+                                        }%>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="favoritos.aspx"><span class="glyphicon glyphicon-heart"></span></a>
+                        </li>
+                        <%}
+                            else
+                            { %>
+
+                        <li>
+                            <a href="encomendas.aspx"><span class="glyphicon glyphicon-bell"></span>
+                                <asp:HiddenField ID="N_encomendas" runat="server" />
+
+                                <%if (N_encomendas.Value != null)
+                                    {  %>
+                                <span class="badge" style="background-color: red" />
+                                <% Response.Write(N_encomendas.Value);
+                                    }%>
+                            </a>
+
+                            <%} %>
+
+                        </li>
+
+                        <!-- Menu da area reservada -->
+
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <% Response.Write(Session["user"]); Response.Write(Session["admin"]);%>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <img src="/Imagens/Utilizadores/<%if (Session["user"] != null) Response.Write(Session["user"]); else Response.Write(Session["admin"]);%>.jpg" style="width: 65px; height: 50px; padding-top: 10px; padding-right: 15px; padding-left: 10px" />
+                                    <b>
+                                        <%if (Session["user"] != null)
+                                            { %>
+                                            Cliente
+                                        <%}
+                                            else
+                                            {  %>
+                                            Admin
+                                        <%} %>
+
+                                    </b>
+                                    <hr />
+                                </li>
+
+                                <!-- Testar qual o perfil do utilizador -->
+                                <%if (Session["admin"] != null)
+                                    { %>
+
+                                <li>
+                                    <a href="Editar_Produto.aspx">Gerir Produtos</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="Novo_produto.aspx">Inserir Produto</a>
+                                </li>
+
+                                <li>
+                                    <a href="Gerir_utilizadores.aspx">Utilizadores</a>
+                                </li>
+
+                                <li>
+                                    <a href="encomendas.aspx">Encomendas</a>
+                                </li>
+
+                                <%} %>
+
+                                <% else
+                                    { %>
+                                <li>
+                                    <a href="perfil.aspx">Perfil</a>
+                                </li>
+                                <li>
+                                    <a href="encomendas.aspx">Compras</a>
+                                </li>
+
+                                <%} %>
+
+                                <li>
+                                    <a href="logout.aspx">Sair </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+
+
+                    <% } %>
+                </div>
+            </nav>
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <% HttpCookie autorizacao_cookies = Request.Cookies["Autorizacao"];
+                if (autorizacao_cookies == null)
+                {%>
+            <div class="cookie-consent">
+                <span>Este site usa Cookies para armazenar dados. Autoriza a sua utilização? &nbsp; &nbsp; &nbsp;  </span>
+                <div class=" ml-2 d-flex align-items-center justify-content-center g-2">
+                    <button class="allow-button mr-1" runat="server" onserverclick="aceitar_Click">Permitir cookies</button>
+                    <button class="allow-button">Cancelar</button>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </form>
+</body>
+</html>

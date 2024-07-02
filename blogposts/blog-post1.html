@@ -84,6 +84,18 @@
         footer a:hover {
             color: #0056b3;
         }
+
+        #comments-section {
+            margin-top: 40px;
+        }
+
+        .comment-form {
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="70">
@@ -122,7 +134,7 @@
     <main class="container content-section">
         <section id="introduction">
             <h2>Introduction to BDSM</h2>
-            <img src="image1.jpg" alt="Understanding BDSM">
+            <img src="image1.jpg" alt="Understanding BDSM" class="img-fluid" alt="Image" loading="lazy">
             <p>
                 BDSM stands for Bondage, Discipline, Dominance, Submission, Sadism, and Masochism. It encompasses a variety of practices and role-playing scenarios that involve power dynamics, physical restraint, and consensual exchanges of power.
             </p>
@@ -169,6 +181,17 @@
             </p>
         </section>
 
+        <section id="comments-section" class="mt-5">
+            <h2>Comments</h2>
+            <div class="comment-form">
+                <textarea id="comment-input" class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+                <button class="btn btn-primary mt-2" onclick="postComment()">Post Comment</button>
+            </div>
+            <div id="comments-container" class="mt-4">
+                <!-- Comments will be dynamically inserted here -->
+            </div>
+        </section>
+
         <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
     </main>
 
@@ -183,27 +206,63 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Show or hide the back-to-top button
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 200) {
-                    $('.back-to-top').fadeIn();
-                } else {
-                    $('.back-to-top').fadeOut();
-                }
-            });
+            const currentPostId = 'post1';
+            const comments = JSON.parse(localStorage.getItem('comments')) || {};
 
-            // Smooth scrolling to sections
-            $('a.nav-link, .back-to-top').click(function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 800, function(){
-                        window.location.hash = hash;
-                    });
+            const renderComments = () => {
+                const container = document.getElementById('comments-container');
+                container.innerHTML = '';
+                const postComments = comments[currentPostId] || [];
+                postComments.forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment';
+                    commentElement.innerHTML = `
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p class="card-text">${comment.text}</p>
+                                <footer class="blockquote-footer">${comment.user}</footer>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(commentElement);
+                });
+            };
+
+            const postComment = () => {
+                const commentInput = document.getElementById('comment-input');
+                const text = commentInput.value;
+                if (text) {
+                    const currentUser = JSON.parse(sessionStorage.getItem('currentUser')) || { username: 'Anonymous' };
+                    const comment = {
+                        user: currentUser.username,
+                        text: text,
+                        date: new Date()
+                    };
+                    if (!comments[currentPostId]) {
+                        comments[currentPostId] = [];
+                    }
+                    comments[currentPostId].push(comment);
+                    localStorage.setItem('comments', JSON.stringify(comments));
+                    commentInput.value = '';
+                    renderComments();
                 }
-            });
+            };
+
+            renderComments();
+        });
+
+        // Back to top button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $('.back-to-top').fadeIn();
+            } else {
+                $('.back-to-top').fadeOut();
+            }
+        });
+
+        $('.back-to-top').click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 800);
         });
     </script>
 </body>

@@ -35,6 +35,25 @@
             text-align: center;
             margin: 5px 0;
         }
+
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 700px;
+            width: 1500px; ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .parallax .content {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -42,6 +61,7 @@
         <h1>User Profile</h1>
     </header>
     <main>
+    <section class="parallax" style="background-image: url('background.jpg');">
         <div class="container profile-edit-container">
             <h2>Customize Your Profile</h2>
             <form id="edit-profile-form">
@@ -86,6 +106,7 @@
                 </div>
             </div>
         </div>
+    </section>
     </main>
     <footer>
         <p>&copy; 2024 BDSM Test. All rights reserved.</p>

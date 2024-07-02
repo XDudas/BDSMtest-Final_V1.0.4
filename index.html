@@ -6,8 +6,10 @@
     <title>BDSM Test</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .welcome-container, .guest-container {
             margin-bottom: 20px;
@@ -53,6 +55,37 @@
             object-fit: cover;
             background-color: #000;
         }
+
+        #comments-section {
+            margin-top: 40px;
+        }
+
+        .comment-form {
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            margin-bottom: 20px;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 400px;
+            width: 1000px; ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .parallax .content {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -69,160 +102,173 @@
         </div>
     </header>
     <main>
-        <div class="container">
-            <div class="welcome-container" id="welcome-container" style="display:none;">
-                <h1>Welcome, <span id="username"></span>!</h1>
+        <section class="parallax" style="background-image: url('background.jpg');">
+        
+            <div class="container">
+                <div class="welcome-container" id="welcome-container" style="display:none;">
+                    <h1>Welcome, <span id="username"></span>!</h1>
+                </div>
+                <div class="guest-container" id="guest-container">
+                    <h1>Welcome, Guest!</h1>
+                    <p>Please <a href="login.html">login</a> or <a href="register.html">register</a> to access more features.</p>
+                </div>
             </div>
-            <div class="guest-container" id="guest-container">
-                <h1>Welcome, Guest!</h1>
-                <p>Please <a href="login.html">login</a> or <a href="register.html">register</a> to access more features.</p>
+        </section>
+            <section class="mode-selection">
+                <h2>Select Test Mode</h2>
+                <div class="mode">
+                    <h3><i class="fas fa-vial"></i> Classic Test</h3>
+                    <p>A longer test with more detailed results.</p>
+                    <button class="btn btn-primary" onclick="startTest('classic')">Start Classic Test</button>
+                </div>
+                <div class="mode">
+                    <h3><i class="fas fa-stopwatch"></i> Short Test</h3>
+                    <p>A shorter test for quick results.</p>
+                    <button class="btn btn-primary" onclick="startTest('short')">Start Short Test</button>
+                </div>
+                <h2>See Memories</h2>
+                <div class="mode">
+                    <h3><i class="fas fa-book"></i> Other Project</h3>
+                    <p>Open the Group Album page.</p>
+                    <button class="btn btn-primary" onclick="openMemeDiana()">Open Book of Memories</button>
+                </div>
+                <div class="mode">
+                    <h2>Play our Games</h2>
+                    <h3><i class="fas fa-gamepad"></i> Games</h3>
+                    <p>Explore our collection of games.</p>
+                    <button class="btn btn-primary" onclick="window.location.href='games.html'">Go to Games</button>
+                </div>
+                <div class="mode">
+                    <h2>Group Memes with AI</h2>
+                    <h3><i class="fas fa-video"></i> AI Videos</h3>
+                    <p>Explore our collection of AI videos.</p>
+                    <button class="btn btn-primary" onclick="window.location.href='videos.html'">Go to Videos</button>
+                </div>
+                <div class="mode">
+                    <h2>Bandai Namco</h2>
+                    <h3><i class="fas fa-cart"></i> Digital Store</h3>
+                    <p>Explore our collection of Games and figurines with Bandai Namco.</p>
+                    <button class="btn btn-primary" onclick="window.location.href='BandaiNamco.Projeto_Mod17EB/BandaiNamco.aspx'">Go to store</button>
+                </div>
+            </section>
+            <section class="minigames-section mt-5">
+                <h2>Mini Games</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="chess-game-image.png" class="card-img-top" alt="Chess Game">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-chess"></i> Chess Game</h5>
+                                <p class="card-text">Play the chess game.</p>
+                                <a href="Chess-master/indexx.html" class="btn btn-primary">Play Chess-Master</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="lovers-roulette-image.jpg" class="card-img-top" alt="Lover's Roulette">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-heart"></i> Lover's Roulette</h5>
+                                <p class="card-text">Play Lover's Roulette game.</p>
+                                <a href="LOVERS ROULLETE/indexxx.html" class="btn btn-primary">Play Lover's Roulette</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="sans-game-image.png" class="card-img-top" alt="Sans Game">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-skull"></i> Sans Game</h5>
+                                <p class="card-text">Play the Miguel Fight.</p>
+                                <a href="sans-fight/Build/index.html" class="btn btn-primary">Play Miguel sans-fight</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="artur-last-stand-image.png" class="card-img-top" alt="Artur Last Stand">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-stopwatch"></i> Artur Last Stand</h5>
+                                <p class="card-text">LAST BREATH.</p>
+                                <a href="undertale-last-breath-remake-bad-time-simulator-master/index.html" class="btn btn-primary">Artur: You ... can´t ... beat me</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blog-section mt-5">
+                <h2>Latest Blog Posts</h2>
+                <div class="row" id="blog-posts-container">
+                    <!-- Blog posts will be inserted here dynamically -->
+                </div>
+            </section>
+                
+            <div id="test-section" class="hidden">
+                <div id="question-container">
+                    <h2 id="question"></h2>
+                    <div class="answer-options">
+                        <button class="btn btn-success strongly-agree" onclick="recordAnswer('Strongly Agree')">Strongly Agree</button>
+                        <button class="btn btn-success agree" onclick="recordAnswer('Agree')">Agree</button>
+                        <button class="btn btn-warning neutral" onclick="recordAnswer('Neutral')">Neutral</button>
+                        <button class="btn btn-danger disagree" onclick="recordAnswer('Disagree')">Disagree</button>
+                        <button class="btn btn-danger strongly-disagree" onclick="recordAnswer('Strongly Disagree')">Strongly Disagree</button>
+                    </div>
+                </div>
             </div>
+            <div id="results-section" class="hidden">
+                <h2>Your Results</h2>
+                <div id="results-container"></div>
+                <div id="video-container" class="hidden">
+                    <video width="320" height="240" controls>
+                        <source src="BIG BANG ATTACK.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <button class="btn btn-secondary" onclick="restartTest()">Restart</button>
+                <button class="btn btn-secondary" id="download-results" onclick="downloadResultsAsPDF()">Download Results as PDF</button>
+            </div>
+            <section class="download-section">
+                <h2>Download Game</h2>
+                <a class="btn btn-info" href="NineEleven.exe" download>Download Nine Eleven Game</a>
+            </section>
+            <hr>
+            <section class="playlist-section">
+                <h2>Playlist</h2>
+                <input type="file" id="song-input" multiple>
+                <button class="btn btn-primary" onclick="uploadSongs()">Upload Songs</button>
+                <div class="playlist-container">
+                    <ul id="playlist"></ul>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>Follow us on social media: <a href="https://www.youtube.com/watch?v=87SIhiQPjtk" target="_blank">YouTube</a></p>
+            <p>&copy; 2024 BDSM Test. All rights reserved.</p>
+        </footer>
+
+        <div class="video-container video-left">
+            <video id="video-left" autoplay loop muted>
+                <source src="DBZ memes.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button class="btn btn-warning mute-button" onclick="toggleSound('video-left')">🔇</button>
+            <button class="btn btn-warning toggle-video" onclick="toggleVideo('video-left')">Hide Video</button>
         </div>
-        <section class="mode-selection">
-            <h2>Select Test Mode</h2>
-            <div class="mode">
-                <h3><i class="fas fa-vial"></i> Classic Test</h3>
-                <p>A longer test with more detailed results.</p>
-                <button class="btn btn-primary" onclick="startTest('classic')">Start Classic Test</button>
-            </div>
-            <div class="mode">
-                <h3><i class="fas fa-stopwatch"></i> Short Test</h3>
-                <p>A shorter test for quick results.</p>
-                <button class="btn btn-primary" onclick="startTest('short')">Start Short Test</button>
-            </div>
-            <h2>See Memories</h2>
-            <div class="mode">
-                <h3><i class="fas fa-book"></i> Other Project</h3>
-                <p>Open the Group Album page.</p>
-                <button class="btn btn-primary" onclick="openMemeDiana()">Open Book of Memories</button>
-            </div>
-            <div class="mode">
-                <h2>Play our Games</h2>
-                <h3><i class="fas fa-gamepad"></i> Games</h3>
-                <p>Explore our collection of games.</p>
-                <button class="btn btn-primary" onclick="window.location.href='games.html'">Go to Games</button>
-            </div>
-            <div class="mode">
-                <h2>Group Memes with AI</h2>
-                <h3><i class="fas fa-video"></i> AI Videos</h3>
-                <p>Explore our collection of AI videos.</p>
-                <button class="btn btn-primary" onclick="window.location.href='videos.html'">Go to Videos</button>
-            </div>
-        </section>
-        <section class="minigames-section mt-5">
-            <h2>Mini Games</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="chess-game-image.png" class="card-img-top" alt="Chess Game">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-chess"></i> Chess Game</h5>
-                            <p class="card-text">Play the chess game.</p>
-                            <a href="Chess-master/indexx.html" class="btn btn-primary">Play Chess-Master</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="lovers-roulette-image.jpg" class="card-img-top" alt="Lover's Roulette">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-heart"></i> Lover's Roulette</h5>
-                            <p class="card-text">Play Lover's Roulette game.</p>
-                            <a href="LOVERS ROULLETE/indexxx.html" class="btn btn-primary">Play Lover's Roulette</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="sans-game-image.png" class="card-img-top" alt="Sans Game">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-skull"></i> Sans Game</h5>
-                            <p class="card-text">Play the Miguel Fight.</p>
-                            <a href="sans-fight/Build/index.html" class="btn btn-primary">Play Miguel sans-fight</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="artur-last-stand-image.png" class="card-img-top" alt="Artur Last Stand">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-stopwatch"></i> Artur Last Stand</h5>
-                            <p class="card-text">LAST BREATH.</p>
-                            <a href="undertale-last-breath-remake-bad-time-simulator-master/index.html" class="btn btn-primary">Artur: You ... can´t ... beat me</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="blog-section mt-5">
-            <h2>Latest Blog Posts</h2>
-            <div class="row" id="blog-posts-container">
-                <!-- Blog posts will be inserted here dynamically -->
-            </div>
-        </section>
-            
-        <div id="test-section" class="hidden">
-            <div id="question-container">
-                <h2 id="question"></h2>
-                <div class="answer-options">
-                    <button class="btn btn-success strongly-agree" onclick="recordAnswer('Strongly Agree')">Strongly Agree</button>
-                    <button class="btn btn-success agree" onclick="recordAnswer('Agree')">Agree</button>
-                    <button class="btn btn-warning neutral" onclick="recordAnswer('Neutral')">Neutral</button>
-                    <button class="btn btn-danger disagree" onclick="recordAnswer('Disagree')">Disagree</button>
-                    <button class="btn btn-danger strongly-disagree" onclick="recordAnswer('Strongly Disagree')">Strongly Disagree</button>
-                </div>
-            </div>
+        <div class="video-container video-right">
+            <video id="video-right" autoplay loop muted>
+                <source src="Japanese songs that sing about depression.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button class="btn btn-warning mute-button" onclick="toggleSound('video-right')">🔇</button>
+            <button class="btn btn-warning toggle-video" onclick="toggleVideo('video-right')">Hide Video</button>
         </div>
-        <div id="results-section" class="hidden">
-            <h2>Your Results</h2>
-            <div id="results-container"></div>
-            <div id="video-container" class="hidden">
-                <video width="320" height="240" controls>
-                    <source src="BIG BANG ATTACK.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <button class="btn btn-secondary" onclick="restartTest()">Restart</button>
-            <button class="btn btn-secondary" id="download-results" onclick="downloadResultsAsPDF()">Download Results as PDF</button>
-        </div>
-        <section class="download-section">
-            <h2>Download Game</h2>
-            <a class="btn btn-info" href="NineEleven.exe" download>Download Nine Eleven Game</a>
-        </section>
-        <hr>
-        <section class="playlist-section">
-            <h2>Playlist</h2>
-            <input type="file" id="song-input" multiple>
-            <button class="btn btn-primary" onclick="uploadSongs()">Upload Songs</button>
-            <div class="playlist-container">
-                <ul id="playlist"></ul>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Follow us on social media: <a href="https://www.youtube.com/watch?v=87SIhiQPjtk" target="_blank">YouTube</a></p>
-        <p>&copy; 2024 BDSM Test. All rights reserved.</p>
-    </footer>
-
-    <div class="video-container video-left">
-        <video id="video-left" autoplay loop muted>
-            <source src="DBZ memes.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <button class="btn btn-warning mute-button" onclick="toggleSound('video-left')">🔇</button>
-        <button class="btn btn-warning toggle-video" onclick="toggleVideo('video-left')">Hide Video</button>
-    </div>
-
-    <div class="video-container video-right">
-        <video id="video-right" autoplay loop muted>
-            <source src="Japanese songs that sing about depression.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <button class="btn btn-warning mute-button" onclick="toggleSound('video-right')">🔇</button>
-        <button class="btn btn-warning toggle-video" onclick="toggleVideo('video-right')">Hide Video</button>
-    </div>
-
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
@@ -274,7 +320,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${post.title}</h5>
                                 <p class="card-text">${post.summary}</p>
-                                <a href="${post.link}" class="btn btn-primary">Read More</a>
+                                <a href="${post.link}" class="btn btn-primary" onclick="setCurrentPost('${post.id}')">Read More</a>
                             </div>
                         </div>
                     `;
@@ -284,12 +330,41 @@
 
             // Render the sample blog posts
             renderBlogPosts(blogPosts);
+
+            // Set current post in session storage
+            const setCurrentPost = (postId) => {
+                sessionStorage.setItem('currentPost', postId);
+            };
         });
 
         function logout() {
             sessionStorage.removeItem('currentUser');
             window.location.reload();
         }
+
+        let likeCount = 0;
+
+        const likePost = () => {
+            likeCount++;
+            alert(`You liked this post ${likeCount} times!`);
+        };
+
+        const sharePost = () => {
+            const postUrl = window.location.href;
+            const shareText = "Check out this interesting post!";
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: shareText,
+                    url: postUrl
+                }).then(() => {
+                    console.log('Post shared successfully!');
+                }).catch(console.error);
+            } else {
+                // Fallback for browsers that do not support the Web Share API
+                prompt("Copy this URL to share:", postUrl);
+            }
+        };
     </script>
     <script src="script.js"></script>
 </body>
