@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | Bandai Namco Europe</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styless.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <style>
+        .apply-section {
+            background-color: #1f1f1f;
+            padding: 50px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 40px 0;
+            color: #ffffff;
+        }
+
+        .apply-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff9800;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+        }
+
+        .apply-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .apply-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .apply-form label {
+            font-size: 1.2rem;
+        }
+
+        .apply-form input,
+        .apply-form textarea {
+            background-color: #333;
+            border: 1px solid #444;
+            color: #ffffff;
+        }
+
+        .apply-form input::placeholder,
+        .apply-form textarea::placeholder {
+            color: #aaa;
+        }
+
+        .apply-form input:focus,
+        .apply-form textarea:focus {
+            border-color: #ff9800;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+        }
+
+        .apply-form button {
+            background-color: #ff9800;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .apply-form button:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__top">
+            <a href="Bandai_Namco.html" class="header__logo">
+                <img src="Imagens/Icons/BandaiNamco.png" alt="Bandai Namco Logo">
+            </a>
+            <div class="header__lang">
+                <img src="Imagens/Icons/inglesicon.png" alt="English Logo">
+            </div>
+            <a href="Bandai_login.html" class="header__login">Login</a>
+        </div>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="Bandai_games.html">Games</a></li>
+                <li><a href="Bandai_store.html">Store</a></li>
+                <li><a href="Bandai_news.html">News</a></li>
+                <li><a href="Bandai_club.html">Club</a></li>
+                <li><a href="Bandai_suporte.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="apply-section">
+            <h2>Join Our Team</h2>
+            <form class="apply-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="position">Position Applied For</label>
+                    <input type="text" class="form-control" id="position" placeholder="Enter the position you are applying for" required>
+                </div>
+                <div class="form-group">
+                    <label for="cover-letter">Cover Letter</label>
+                    <textarea class="form-control" id="cover-letter" rows="5" placeholder="Write your cover letter here" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning">Submit Application</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <nav>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="Games.html" class="text-white">Games</a></li>
+                <li class="list-inline-item"><a href="About.html" class="text-white">About</a></li>
+                <li class="list-inline-item"><a href="Press.html" class="text-white">Press</a></li>
+                <li class="list-inline-item"><a href="Recruitment.html" class="text-white">Recruitment</a></li>
+                <li class="list-inline-item"><a href="Licensing.html" class="text-white">Licensing</a></li>
+            </ul>
+        </nav>
+        <p>© 2024 Bandai Namco Europe S.A.S</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

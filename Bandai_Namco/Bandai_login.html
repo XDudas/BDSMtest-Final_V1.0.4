@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandai Namco Europe | Login</title>
+    <link rel="stylesheet" href="styless.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__top">
+            <a href="Bandai_Namco.html" class="header__logo">
+                <img src="Imagens/Icons/BandaiNamco.png" alt="Bandai Namco Logo">
+            </a>
+            <div class="header__lang">
+                <img src="Imagens/Icons/inglesicon.png" alt="English Logo">
+            </div>
+        </div>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="Bandai_games.html">Games</a></li>
+                <li><a href="Bandai_store.html">Store</a></li>
+                <li><a href="Bandai_news.html">News</a></li>
+                <li><a href="Bandai_club.html">Club</a></li>
+                <li><a href="Bandai_suporte.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-main d-flex justify-content-center align-items-center">
+        <section class="login-section">
+            <div class="login-container">
+                <h2>Login to Your Account</h2>
+                <form class="login-form" id="loginForm">
+                    <div class="form-group floating-label">
+                        <input type="email" id="email" name="email" class="form-control" placeholder=" " required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group floating-label">
+                        <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
+                        <label for="password">Password</label>
+                    </div>
+                    <button type="submit" class="btn glow-on-hover btn-block">Login</button>
+                </form>
+                <p class="register-link mt-3">Don't have an account? <a href="Bandai_register.html">Register</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="Games.html">Games</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Press.html">Press</a></li>
+                <li><a href="Recruitment.html">Recruitment</a></li>
+                <li><a href="Licensing.html">Licensing</a></li>
+            </ul>
+        </nav>
+        <p>© 2024 Bandai Namco Europe S.A.S</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

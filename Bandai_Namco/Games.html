@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games | Bandai Namco Europe</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background-color: #141414;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header__top {
+            display: flex;
+            align-items: center;
+        }
+
+        .header__logo img {
+            width: 120px;
+        }
+
+        .header__lang img {
+            width: 30px;
+            margin-left: 20px;
+        }
+
+        .header__login {
+            background-color: #ff9800;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            margin-left: 20px;
+        }
+
+        .header__login:hover {
+            background-color: #e68900;
+        }
+
+        .header__nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header__nav li {
+            margin-left: 20px;
+        }
+
+        .header__nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1rem;
+        }
+
+        .header__nav a:hover {
+            background-color: #ff9800;
+            transform: scale(1.1);
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-img-top {
+            border-radius: 10px 10px 0 0;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            background-color: #141414;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-warning {
+            background-color: #ff9800;
+            border: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-warning:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+
+        .games,
+        .figurines,
+        .packs {
+            background-color: #1f1f1f;
+            padding: 50px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 40px 0;
+        }
+
+        .games h2,
+        .figurines h2,
+        .packs h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff9800;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .games h2::after,
+        .figurines h2::after,
+        .packs h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #ff9800;
+            margin: 10px auto 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__top">
+            <a href="Bandai_Namco.html" class="header__logo">
+                <img src="Imagens/Icons/BandaiNamco.png" alt="Bandai Namco Logo">
+            </a>
+            <div class="header__lang">
+                <img src="Imagens/Icons/inglesicon.png" alt="English Logo">
+            </div>
+            <a href="Bandai_login.html" class="header__login">Login</a>
+        </div>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="Bandai_games.html">Games</a></li>
+                <li><a href="Bandai_store.html">Store</a></li>
+                <li><a href="Bandai_news.html">News</a></li>
+                <li><a href="Bandai_club.html">Club</a></li>
+                <li><a href="Bandai_suporte.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="games">
+            <h2 class="text-center">Games</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Darksouls_2.jpg" alt="Dark Souls II" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Dark Souls II</h5>
+                            <p class="card-text">An action RPG game set in a dark fantasy world.</p>
+                            <p class="card-text">Platform: PC, PS4, Xbox One</p>
+                            <p class="card-text">Price: $39.99</p>
+                            <p class="card-text">Discount: 20%</p>
+                            <a href="details.html?id=dark_souls_2" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Dragonball_FighterZ.jpg" alt="Dragon Ball FighterZ" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Dragon Ball FighterZ</h5>
+                            <p class="card-text">A fighting game featuring characters from the Dragon Ball series.</p>
+                            <p class="card-text">Platform: PC, PS4, Xbox One</p>
+                            <p class="card-text">Price: $49.99</p>
+                            <p class="card-text">Discount: 10%</p>
+                            <a href="details.html?id=dragon_ball_fighterz" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Dragonball_Sparkinzero.jpg" alt="Dragon Ball Sparking Zero" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Dragon Ball Sparking Zero</h5>
+                            <p class="card-text">An action game based on the Dragon Ball series.</p>
+                            <p class="card-text">Platform: PC, PS4, Xbox One</p>
+                            <p class="card-text">Price: $59.99</p>
+                            <p class="card-text">Discount: 15%</p>
+                            <a href="details.html?id=dragon_ball_sparking_zero" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more game cards here -->
+            </div>
+        </section>
+
+        <section class="figurines">
+            <h2 class="text-center">Figurines</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Tekken8_Figurine_Fist_Meets_Fate.jpg" alt="Tekken 8 Fist Meets Fate Figurine" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Tekken 8 Fist Meets Fate Figurine</h5>
+                            <p class="card-text">A detailed figurine from Tekken 8.</p>
+                            <p class="card-text">Price: $89.99</p>
+                            <a href="details.html?id=tekken_8_fist_meets_fate_figurine" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Tekken8_Figurine_Jin_kazama.jpg" alt="Tekken 8 Jin Kazama Figurine" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Tekken 8 Jin Kazama Figurine</h5>
+                            <p class="card-text">A detailed figurine of Jin Kazama from Tekken 8.</p>
+                            <p class="card-text">Price: $79.99</p>
+                            <a href="details.html?id=tekken_8_jin_kazama_figurine" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Tekken8_Figurine_Kazuya_Mishima.jpg" alt="Tekken 8 Kazuya Mishima Figurine" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Tekken 8 Kazuya Mishima Figurine</h5>
+                            <p class="card-text">A detailed figurine of Kazuya Mishima from Tekken 8.</p>
+                            <p class="card-text">Price: $79.99</p>
+                            <a href="details.html?id=tekken_8_kazuya_mishima_figurine" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more figurine cards here -->
+            </div>
+        </section>
+
+        <section class="packs">
+            <h2 class="text-center">Packs Collection</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Tekken8_Collectors_Edition.jpg" alt="Tekken 8 Collector's Edition" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Tekken 8 Collector's Edition</h5>
+                            <p class="card-text">Collector's edition of Tekken 8 with exclusive content.</p>
+                            <p class="card-text">Price: $99.99</p>
+                            <p class="card-text">Discount: 10%</p>
+                            <a href="details.html?id=tekken_8_collectors" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Imagens/Items_Loja/Tekken8_Ultimate_Edition.jpg" alt="Tekken 8 Ultimate Edition" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Tekken 8 Ultimate Edition</h5>
+                            <p class="card-text">Ultimate edition of Tekken 8 with additional features.</p>
+                            <p class="card-text">Price: $79.99</p>
+                            <p class="card-text">Discount: 15%</p>
+                            <a href="details.html?id=tekken_8_ultimate" class="btn btn-warning">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more pack cards here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <nav>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="Games.html" class="text-white">Games</a></li>
+                <li class="list-inline-item"><a href="About.html" class="text-white">About</a></li>
+                <li class="list-inline-item"><a href="Press.html" class="text-white">Press</a></li>
+                <li class="list-inline-item"><a href="Recruitment.html" class="text-white">Recruitment</a></li>
+                <li class="list-inline-item"><a href="Licensing.html" class="text-white">Licensing</a></li>
+            </ul>
+        </nav>
+        <p>© 2024 Bandai Namco Europe S.A.S</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
